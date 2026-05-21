@@ -1,16 +1,28 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../../database');
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../../config/database.js';
 
-const Book = sequelize.define('Book', {
-  id: { type: DataTypes.UUID, primaryKey: true, defaultValue: DataTypes.UUIDV4 },
-  title: { type: DataTypes.STRING, allowNull: false },
-  author: { type: DataTypes.STRING, allowNull: false },
-  description: { type: DataTypes.TEXT },
-  contentUrl: { type: DataTypes.STRING },
-  isActive: { type: DataTypes.BOOLEAN, defaultValue: true }
-}, {
-  tableName: 'books',
-  timestamps: true
+const BookModel = sequelize.define('Book', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  titulo: {
+    type: DataTypes.STRING,
+    allowNull: false, // RN-34: Obrigatório
+  },
+  autor: {
+    type: DataTypes.STRING,
+    allowNull: false, // RN-34: Obrigatório
+  },
+  categoria: {
+    type: DataTypes.STRING,
+    allowNull: false, // RN-34: Obrigatório
+  },
+  descricao: {
+    type: DataTypes.TEXT,
+    allowNull: true,
+  }
 });
 
-module.exports = Book;
+export { BookModel };

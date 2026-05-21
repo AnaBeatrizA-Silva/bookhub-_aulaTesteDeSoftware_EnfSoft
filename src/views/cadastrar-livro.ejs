@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <%- include('partials/header', { title: 'Novo Livro' }) %>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+
+  <%- include('partials/nav') %>
+
+  <div class="flex-1 flex items-center justify-center p-6 my-4 w-full">
+    <div class="bg-white p-8 rounded-lg shadow-sm w-full max-w-xl border border-gray-200">
+      <h2 class="text-2xl font-bold text-gray-800 mb-1">Cadastrar Novo Livro</h2>
+      <p class="text-sm text-gray-500 mb-6">Insira as informações básicas para disponibilizar a obra no catálogo global.</p>
+
+      <% if (typeof error !== 'undefined' && error) { %>
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded mb-4 text-sm">
+          <%= error %>
+        </div>
+      <% } %>
+
+      <form action="/livros" method="POST" class="space-y-4">
+        <div>
+          <label class="block text-gray-700 text-sm font-medium mb-1">Título do Livro *</label>
+          <input type="text" name="titulo" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-indigo-500">
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-gray-700 text-sm font-medium mb-1">Autor *</label>
+            <input type="text" name="autor" required class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-indigo-500">
+          </div>
+          <div>
+            <label class="block text-gray-700 text-sm font-medium mb-1">Categoria *</label>
+            <input type="text" name="categoria" required placeholder="Ex: Fantasia, Ficção, Técnico" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-indigo-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-gray-700 text-sm font-medium mb-1">Sinopse / Descrição</label>
+          <textarea name="descricao" rows="4" placeholder="Breve resumo sobre a história ou conteúdo do livro..." class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-indigo-500"></textarea>
+        </div>
+
+        <div class="flex space-x-4 pt-4 border-t mt-6">
+          <button type="submit" class="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded transition duration-200">
+            Salvar Livro
+          </button>
+          <a href="/home" class="flex-1 text-center bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2 rounded transition duration-200">
+            Cancelar
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+
+</body>
+</html>

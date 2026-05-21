@@ -1,16 +1,38 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../../database');
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../../config/database.js';
+import bcrypt from 'bcrypt';
 
-const User = sequelize.define('User', {
-  id: { type: DataTypes.UUID, primaryKey: true, defaultValue: DataTypes.UUIDV4 },
-  name: { type: DataTypes.STRING, allowNull: false },
-  email: { type: DataTypes.STRING, unique: true, allowNull: false },
-  password: { type: DataTypes.STRING, allowNull: false },
-  role: { type: DataTypes.ENUM('USER', 'ADMIN'), defaultValue: 'USER' },
-  isBlocked: { type: DataTypes.BOOLEAN, defaultValue: false }
+const UserModel = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  nome: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true, 
+    validate: {
+      isEmail: true,
+    }
+  },
+  senha: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  }
 }, {
-  tableName: 'users',
-  timestamps: true
+  hooks: {
+    beforeSave: async (user) => {
+      if (user.changed('senha')) {
+        const salt = await bcrypt.genSalt(10);
+        user.senha = await bcrypt.hash(user.senha, salt);
+      }
+    }
+  }
 });
 
-module.exports = User;
+export { UserModel };
