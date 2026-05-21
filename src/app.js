@@ -38,7 +38,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.message = req.flash();
   // Mantivemos também a proteção do usuário logado na sessão
-  res.locals.user = req.session?.user git || null; 
+  res.locals.user = req.session?.user || null; 
   next(); // Garante a passagem para as rotas abaixo sem travar
 });
 
