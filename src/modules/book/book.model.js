@@ -9,15 +9,15 @@ const BookModel = sequelize.define('Book', {
   },
   titulo: {
     type: DataTypes.STRING,
-    allowNull: false, // RN-34: Obrigatório
+    allowNull: false, 
   },
   autor: {
     type: DataTypes.STRING,
-    allowNull: false, // RN-34: Obrigatório
+    allowNull: false, 
   },
   categoria: {
     type: DataTypes.STRING,
-    allowNull: false, // RN-34: Obrigatório
+    allowNull: false, 
   },
   descricao: {
     type: DataTypes.TEXT,

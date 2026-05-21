@@ -2,7 +2,6 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { BookService } from "../book.service.js";
 import { BookModel } from "../book.model.js";
 
-// Mock do modelo de Livros do Sequelize
 vi.mock("../book.model.js", () => {
 	return {
 		BookModel: {

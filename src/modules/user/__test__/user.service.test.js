@@ -3,7 +3,6 @@ import { UserService } from "../user.service.js";
 import { UserModel } from "../user.model.js";
 import bcrypt from "bcrypt";
 
-// Mock do modelo do Sequelize para isolar o banco de dados
 vi.mock("../user.model.js", () => {
 	return {
 		UserModel: {

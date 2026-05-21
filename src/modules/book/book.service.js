@@ -6,7 +6,6 @@ export class BookService {
   async cadastrar(dados) {
     const { titulo, autor, categoria, descricao } = dados;
 
-    // RN-34: Campos obrigatórios
     if (!titulo || titulo.trim() === '') {
       throw new Error('O título do livro é obrigatório.');
     }
@@ -18,7 +17,6 @@ export class BookService {
   }
 
   async listarTodos() {
-    // RF-07: Listar livros disponíveis
     return await this.bookModel.findAll();
   }
 }

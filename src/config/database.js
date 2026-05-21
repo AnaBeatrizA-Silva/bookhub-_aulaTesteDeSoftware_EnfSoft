@@ -1,13 +1,12 @@
 import { Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 
-// Carrega as variáveis do arquivo .env para o código
 dotenv.config();
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME,      // Nome do banco (ex: bookhub_db)
-  process.env.DB_USER,      // Usuário (ex: root)
-  process.env.DB_PASSWORD,  // Senha do seu MariaDB
+  process.env.DB_NAME,      
+  process.env.DB_USER,      
+  process.env.DB_PASSWORD,  
   {
     host: process.env.DB_HOST || 'localhost',
     port: process.env.DB_PORT || 3306, 
