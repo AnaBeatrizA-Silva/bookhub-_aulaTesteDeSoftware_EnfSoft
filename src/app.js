@@ -55,7 +55,7 @@ app.use(function(err, req, res, next) {
 });
 
 sequelize.sync({ alter: true })
-  .then(() => console.log('📦 Sincronia realizada'))
-  .catch(err => console.log('❌ Erro de sincronia', err));
+  .then(() => console.log('Sincronia realizada'))
+  .catch(err => console.log('Erro de sincronia', err));
 
 export { app };

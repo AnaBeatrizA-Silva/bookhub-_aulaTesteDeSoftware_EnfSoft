@@ -20,6 +20,7 @@
     "bcryptjs": "^3.0.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.7",
+    "coverage-v8": "^0.0.1-security",
     "dotenv": "^17.4.1",
     "ejs": "^5.0.1",
     "express": "^5.2.1",
