@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/72</span>
+                <span class='fraction'>0/60</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/72</span>
+                <span class='fraction'>0/60</span>
             </div>
         
             
@@ -123,31 +123,7 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a>
-<a name='L62'></a><a href='#L62'>62</a>
-<a name='L63'></a><a href='#L63'>63</a>
-<a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -216,17 +192,14 @@
 <span class="cstat-no" title="statement not covered" >import session from 'express-session';</span>
 <span class="cstat-no" title="statement not covered" >import flash from 'connect-flash';</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// Importa o nosso centralizador de rotas modularizado</span>
 <span class="cstat-no" title="statement not covered" >import { routes } from './routes.js';</span>
 <span class="cstat-no" title="statement not covered" >import { sequelize } from './config/database.js';</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const app = express();</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// Configuração necessária para simular o __dirname no padrão de ES Modules (import)</span>
 <span class="cstat-no" title="statement not covered" >const __filename = fileURLToPath(import.meta.url);</span>
 <span class="cstat-no" title="statement not covered" >const __dirname = path.dirname(__filename);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// view engine setup (Estrutura idêntica à do professor usando o path.join)</span>
 <span class="cstat-no" title="statement not covered" >app.set('views', path.join(__dirname, 'views'));</span>
 <span class="cstat-no" title="statement not covered" >app.set('view engine', 'ejs');</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -241,44 +214,35 @@
 <span class="cstat-no" title="statement not covered" >  cookie: { maxAge: 1000 * 60 * 60 * 24 }</span>
 <span class="cstat-no" title="statement not covered" >}));</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// CORREÇÃO AQUI: Adicionado os parênteses () para o connect-flash rodar como função e não travar a rota</span>
 <span class="cstat-no" title="statement not covered" >app.use(flash()); </span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >app.use((req, res, next) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  res.locals.message = req.flash();</span>
-<span class="cstat-no" title="statement not covered" >  // Mantivemos também a proteção do usuário logado na sessão</span>
 <span class="cstat-no" title="statement not covered" >  res.locals.user = req.session?.user || null; </span>
-<span class="cstat-no" title="statement not covered" >  next(); // Garante a passagem para as rotas abaixo sem travar</span>
+<span class="cstat-no" title="statement not covered" >  next(); </span>
 <span class="cstat-no" title="statement not covered" >});</span>
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >app.use(cookieParser());</span>
 <span class="cstat-no" title="statement not covered" >app.use(express.static(path.join(__dirname, '../public')));</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// LIGA AS ROTAS (Injeta o roteador central que criamos de forma limpa)</span>
 <span class="cstat-no" title="statement not covered" >app.use('/', routes);</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// catch 404 and forward to error handler</span>
 <span class="cstat-no" title="statement not covered" >app.use(function(req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >  next(createError(404));</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// error handler (Exatamente como o dele, renderizando a tela de erro original)</span>
 <span class="cstat-no" title="statement not covered" >app.use(function(err, req, res, next) {</span>
-<span class="cstat-no" title="statement not covered" >  // set locals, only providing error in development</span>
 <span class="cstat-no" title="statement not covered" >  res.locals.message = err.message;</span>
 <span class="cstat-no" title="statement not covered" >  res.locals.error = req.app.get('env') === 'development' ? err : {};</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  // render the error page</span>
 <span class="cstat-no" title="statement not covered" >  res.status(err.status || 500);</span>
 <span class="cstat-no" title="statement not covered" >  res.render('error');</span>
 <span class="cstat-no" title="statement not covered" >});</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// Sincroniza o modelo com o banco de dados</span>
 <span class="cstat-no" title="statement not covered" >sequelize.sync({ alter: true })</span>
-<span class="cstat-no" title="statement not covered" >  .then(() =&gt; console.log('📦 Sincronia realizada'))</span>
-<span class="cstat-no" title="statement not covered" >  .catch(err =&gt; console.log('❌ Erro de sincronia', err));</span>
+<span class="cstat-no" title="statement not covered" >  .then(() =&gt; console.log('Sincronia realizada'))</span>
+<span class="cstat-no" title="statement not covered" >  .catch(err =&gt; console.log('Erro de sincronia', err));</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >// Exporta o app (Equivalente moderno para module.exports = app)</span>
 export { app };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -286,7 +250,7 @@ export { app };</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-21T01:31:07.500Z
+                at 2026-05-26T23:16:35.122Z
             </div>
         <script src="../prettify.js"></script>
         <script>
